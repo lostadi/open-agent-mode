@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Docker-in-Docker service for running agent VMs
+  dind:
+    image: docker:dind
+    privileged: true
+    container_name: open-agent-dind
+    ports:
+      - "2375:2375"
+      - "2376:2376"
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    volumes:
+      - docker-data:/var/lib/docker
+      - agent-workspaces:/workspaces
+    networks:
+      - agent-network
+
+  # Optional: Pre-built agent VM image
+  agent-vm-base:
+    build:
+      context: .
+      dockerfile: Dockerfile.vm
+    image: open-agent-vm:base
+    command: echo "Base image built"
+    
+volumes:
+  docker-data:
+    driver: local
+  agent-workspaces:
+    driver: local
+
+networks:
+  agent-network:
+    driver: bridge

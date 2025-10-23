@@ -1,0 +1,73 @@
+# Base image for Open Agent VM environments
+FROM python:3.11-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    wget \
+    vim \
+    nano \
+    build-essential \
+    software-properties-common \
+    sudo \
+    net-tools \
+    iputils-ping \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python packages
+RUN pip install --no-cache-dir \
+    numpy \
+    pandas \
+    matplotlib \
+    seaborn \
+    scikit-learn \
+    requests \
+    beautifulsoup4 \
+    selenium \
+    flask \
+    fastapi \
+    django \
+    pytest \
+    black \
+    pylint \
+    mypy \
+    ipython \
+    jupyter
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g typescript eslint prettier jest
+
+# Install Go
+RUN wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz && \
+    rm go1.21.0.linux-amd64.tar.gz
+ENV PATH=$PATH:/usr/local/go/bin
+
+# Install Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH=$PATH:/root/.cargo/bin
+
+# Install Ruby
+RUN apt-get update && \
+    apt-get install -y ruby-full && \
+    gem install bundler rails sinatra
+
+# Create workspace directory
+WORKDIR /workspace
+
+# Create agent user
+RUN useradd -m -s /bin/bash -G sudo agent && \
+    echo "agent ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+    chown -R agent:agent /workspace
+
+# Switch to agent user
+USER agent
+
+# Set up shell
+RUN echo 'export PS1="\[\e[32m\]agent@vm\[\e[m\]:\[\e[34m\]\w\[\e[m\]$ "' >> ~/.bashrc
+
+# Default command
+CMD ["/bin/bash"]
