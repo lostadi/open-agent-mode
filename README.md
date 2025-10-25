@@ -86,6 +86,17 @@ asyncio.run(main())
 
 ## Supported AI Providers
 
+| Provider | Type | Tool Support | Streaming | Context Window | Speed | Cost |
+|----------|------|--------------|-----------|----------------|-------|------|
+| **OpenAI GPT-4** | Cloud | ✅ Full | ✅ | 128K | Medium | $$$ |
+| **Anthropic Claude** | Cloud | ✅ Full | ✅ | 200K | Medium | $$$ |
+| **Google Gemini** | Cloud | ✅ Full | ✅ | 2M | Fast | $$ |
+| **Groq** | Cloud | ✅ Full | ✅ | 128K | Ultra-Fast | $ |
+| **Ollama** | Local | ⚠️ Limited | ✅ | 4K-128K | Variable | Free |
+| **vLLM** | Self-hosted | ⚠️ Limited | ✅ | Variable | Fast | Free* |
+
+*Requires infrastructure costs
+
 ### 1. OpenAI (GPT-4, GPT-3.5)
 
 ```python
