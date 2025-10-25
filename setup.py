@@ -48,6 +48,8 @@ setup(
         "aiodocker>=0.21.0",
         "black>=23.0.0",
         "autopep8>=2.0.0",
+        "google-generativeai>=0.3.0",
+        "groq>=0.4.0",
     ],
     extras_require={
         "dev": [
