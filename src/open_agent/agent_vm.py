@@ -1,9 +1,7 @@
 """Enhanced agent with integrated VM environment."""
 
-import asyncio
 import logging
 from typing import Optional, Dict, Any
-from pathlib import Path
 
 from .agent import Agent, AgentConfig, Message
 from .environment.vm_manager import VMEnvironment, VMConfig

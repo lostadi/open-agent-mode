@@ -5,10 +5,8 @@ import click
 import sys
 from pathlib import Path
 from rich.console import Console
-from rich.markdown import Markdown
 from rich.prompt import Prompt
 from rich.panel import Panel
-from rich.syntax import Syntax
 import logging
 from typing import Optional
 

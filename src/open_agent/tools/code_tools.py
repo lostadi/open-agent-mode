@@ -2,13 +2,11 @@
 
 import ast
 import asyncio
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Optional, List
 import black
-import autopep8
 
 from .base import Tool, ToolDefinition, ToolParameter, ToolResult
 

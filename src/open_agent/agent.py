@@ -1,13 +1,11 @@
 """Main agent implementation with conversation management and tool execution."""
 
-import asyncio
 import json
 import logging
 from typing import List, Dict, Any, Optional, AsyncIterator
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-import pickle
 
 from pydantic import BaseModel, Field
 

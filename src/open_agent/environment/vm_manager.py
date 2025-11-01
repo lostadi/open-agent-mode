@@ -4,14 +4,11 @@ import asyncio
 import docker
 import tarfile
 import io
-import json
 import uuid
 import tempfile
-import shutil
 from pathlib import Path
 from typing import Dict, Any, Optional, Tuple, List
 from dataclasses import dataclass
-import aiofiles
 import aiodocker
 import logging
 
@@ -449,7 +446,7 @@ All files and code execution happens within this containerized space.
         
         # Commit container to image
         self.container.commit(
-            repository=f"agent-snapshot",
+            repository="agent-snapshot",
             tag=snapshot_id
         )
         

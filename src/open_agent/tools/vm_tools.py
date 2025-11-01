@@ -1,11 +1,9 @@
 """VM-integrated tools for agent operations."""
 
-from typing import Optional, Dict, Any, List
-from pathlib import Path
 import json
 
 from .base import Tool, ToolDefinition, ToolParameter, ToolResult
-from ..environment.vm_manager import VMEnvironment, VMConfig
+from ..environment.vm_manager import VMEnvironment
 
 
 class VMExecuteCodeTool(Tool):

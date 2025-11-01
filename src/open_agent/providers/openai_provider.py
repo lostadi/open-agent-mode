@@ -1,9 +1,7 @@
 """OpenAI provider implementation."""
 
 import os
-import json
 from typing import Dict, List, Any, Optional, AsyncIterator
-import openai
 from openai import AsyncOpenAI
 import logging
 

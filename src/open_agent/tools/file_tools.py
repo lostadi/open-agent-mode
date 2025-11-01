@@ -1,12 +1,9 @@
 """File operation tools for reading, writing, and manipulating files."""
 
-import os
 import shutil
 from pathlib import Path
-from typing import List, Optional
+from typing import Optional
 import aiofiles
-import json
-import yaml
 
 from .base import Tool, ToolDefinition, ToolParameter, ToolResult
 
