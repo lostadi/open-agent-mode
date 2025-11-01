@@ -4,6 +4,7 @@ import ast
 import asyncio
 import sys
 import tempfile
+import json
 from pathlib import Path
 from typing import Optional, List
 import black
@@ -354,7 +355,6 @@ class FormatCodeTool(Tool):
                     error="JavaScript formatting not yet implemented"
                 )
             elif language == "json":
-                import json
                 parsed = json.loads(code)
                 formatted = json.dumps(parsed, indent=2)
                 return ToolResult(success=True, output=formatted)
