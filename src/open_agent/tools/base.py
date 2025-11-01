@@ -5,7 +5,6 @@ from typing import Any, Dict, List, Optional, Type, Callable
 from pydantic import BaseModel, Field
 import json
 import inspect
-from enum import Enum
 
 
 class ToolParameter(BaseModel):

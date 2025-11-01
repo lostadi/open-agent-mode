@@ -2,13 +2,12 @@
 
 import ast
 import asyncio
-import subprocess
 import sys
 import tempfile
+import json
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Optional, List
 import black
-import autopep8
 
 from .base import Tool, ToolDefinition, ToolParameter, ToolResult
 
@@ -356,7 +355,6 @@ class FormatCodeTool(Tool):
                     error="JavaScript formatting not yet implemented"
                 )
             elif language == "json":
-                import json
                 parsed = json.loads(code)
                 formatted = json.dumps(parsed, indent=2)
                 return ToolResult(success=True, output=formatted)

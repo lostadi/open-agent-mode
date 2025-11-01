@@ -1,6 +1,5 @@
 """Ollama provider for running local LLMs."""
 
-import os
 import json
 from typing import Dict, List, Any, Optional, AsyncIterator
 import aiohttp
